@@ -1,4 +1,4 @@
-'use client'
+'use client'; // Pastikan directive ini ada di bagian atas file
 
 import React, { useState } from "react";
 import {
@@ -9,23 +9,27 @@ import {
   TableRow,
 } from "../ui/table";
 
-import Badge from "../ui/badge/Badge";
-import Image from "next/image";
+import Button from "../ui/button/Button";
+import { useRouter } from "next/navigation"; // Gunakan next/navigation untuk App Router
 
-// interface Order {
-//   id: number;
-//   user: {
-//     image: string;
-//     name: string;
-//     role: string;
-//   };
-//   projectName: string;
-//   team: {
-//     images: string[];
-//   };
-//   status: string;
-//   budget: string;
-// }
+interface Order {
+  no_invoice: string;
+  nama_perusahaan: string;
+  progress: {
+    progres_1: boolean;
+    progres_2: boolean;
+    progres_3: boolean;
+    progres_4: boolean;
+  };
+  handle_by: {
+    progres_1: any;
+    progres_2: any;
+    progres_3: any;
+    progres_4: any;
+  };
+  invoice_date: string;
+  due_date: string;
+}
 
 interface Order {
   no_invoice: string,
@@ -45,92 +49,6 @@ interface Order {
   invoice_date: string,
   due_date: string
 }
-
-// Define the table data using the interface
-// const tableData: Order[] = [
-//   {
-//     id: 1,
-//     user: {
-//       image: "/images/user/user-17.jpg",
-//       name: "Lindsey Curtis",
-//       role: "Web Designer",
-//     },
-//     projectName: "Agency Website",
-//     team: {
-//       images: [
-//         "/images/user/user-22.jpg",
-//         "/images/user/user-23.jpg",
-//         "/images/user/user-24.jpg",
-//       ],
-//     },
-//     budget: "3.9K",
-//     status: "Active",
-//   },
-//   {
-//     id: 2,
-//     user: {
-//       image: "/images/user/user-18.jpg",
-//       name: "Kaiya George",
-//       role: "Project Manager",
-//     },
-//     projectName: "Technology",
-//     team: {
-//       images: ["/images/user/user-25.jpg", "/images/user/user-26.jpg"],
-//     },
-//     budget: "24.9K",
-//     status: "Pending",
-//   },
-//   {
-//     id: 3,
-//     user: {
-//       image: "/images/user/user-17.jpg",
-//       name: "Zain Geidt",
-//       role: "Content Writing",
-//     },
-//     projectName: "Blog Writing",
-//     team: {
-//       images: ["/images/user/user-27.jpg"],
-//     },
-//     budget: "12.7K",
-//     status: "Active",
-//   },
-//   {
-//     id: 4,
-//     user: {
-//       image: "/images/user/user-20.jpg",
-//       name: "Abram Schleifer",
-//       role: "Digital Marketer",
-//     },
-//     projectName: "Social Media",
-//     team: {
-//       images: [
-//         "/images/user/user-28.jpg",
-//         "/images/user/user-29.jpg",
-//         "/images/user/user-30.jpg",
-//       ],
-//     },
-//     budget: "2.8K",
-//     status: "Cancel",
-//   },
-//   {
-//     id: 5,
-//     user: {
-//       image: "/images/user/user-21.jpg",
-//       name: "Carla George",
-//       role: "Front-end Developer",
-//     },
-//     projectName: "Website",
-//     team: {
-//       images: [
-//         "/images/user/user-31.jpg",
-//         "/images/user/user-32.jpg",
-//         "/images/user/user-33.jpg",
-//       ],
-//     },
-//     budget: "4.5K",
-//     status: "Active",
-//   },
-// ];
 
 const tableData: Order[] = [
   {
@@ -326,6 +244,7 @@ const formatDate = (dateString: string): string => {
 };
 
 export default function BasicTableOne() {
+  const router = useRouter(); // Gunakan useRouter dari next/navigation
   const [expandedRow, setExpandedRow] = useState<string | null>(null);
 
   const handleRowClick = (no_invoice: string) => {
@@ -362,25 +281,31 @@ export default function BasicTableOne() {
                   isHeader
                   className="px-5 py-3 font-medium text-gray-500 text-start text-theme-md dark:text-gray-400"
                 >
-                  Progres 1
+                  Bussiness Proposal Offering
                 </TableCell>
                 <TableCell
                   isHeader
                   className="px-5 py-3 font-medium text-gray-500 text-start text-theme-md dark:text-gray-400"
                 >
-                  Progres 2
+                  PKS
                 </TableCell>
                 <TableCell
                   isHeader
                   className="px-5 py-3 font-medium text-gray-500 text-start text-theme-md dark:text-gray-400"
                 >
-                  Progres 3
+                  BAST
                 </TableCell>
                 <TableCell
                   isHeader
                   className="px-5 py-3 font-medium text-gray-500 text-start text-theme-md dark:text-gray-400"
                 >
-                  Progres 4
+                  Invoice & Tax Inovice
+                </TableCell>
+                <TableCell
+                  isHeader
+                  className="px-5 py-3 font-medium text-gray-500 text-start text-theme-md dark:text-gray-400"
+                >
+                  Opsi
                 </TableCell>
               </TableRow>
             </TableHeader>
@@ -389,81 +314,79 @@ export default function BasicTableOne() {
             <TableBody className="divide-y divide-gray-100 dark:divide-white/[0.05]">
               {tableData.map((order, index) => (
                 <React.Fragment key={order.no_invoice}>
-                <TableRow onClick={() => handleRowClick(order.no_invoice)} className="cursor-pointer hover:bg-gray-100">
-                  <TableCell className="px-5 py-3 text-gray-500 text-start text-theme-md dark:text-gray-400">
-                    {index + 1}
-                  </TableCell>
-                  <TableCell className="px-5 py-3 text-gray-500 text-start text-theme-md dark:text-gray-400">
-                    {order.no_invoice}
-                  </TableCell>
-                  <TableCell className="px-5 py-3 text-gray-500 text-start text-theme-md dark:text-gray-400">
-                    {order.nama_perusahaan}
-                  </TableCell>
-                  {Object.values(order.progress).map((status, idx) => (
-                    <TableCell key={idx} className="px-5 py-3 text-gray-500 text-start text-theme-md dark:text-gray-400">
-                      <div
-                        className={`w-4 h-4 rounded-full ${
-                          status ? "bg-green-500" : "bg-gray-300"
-                        }`}
-                      ></div>
+                  <TableRow onClick={() => handleRowClick(order.no_invoice)} className="cursor-pointer hover:bg-gray-100">
+                    <TableCell className="px-5 py-3 text-gray-500 text-start text-theme-md dark:text-gray-400">
+                      {index + 1}
                     </TableCell>
-                  ))}
-                </TableRow>
-                {expandedRow === order.no_invoice && (
-                  <tr className="bg-gray-50 dark:bg-gray-800">
-                    <td colSpan={7}>
-                      <div className="p-4 bg-white dark:bg-gray-700 rounded-lg shadow-md">
-                        <h3 className="font-semibold text-lg mb-2 text-gray-700 dark:text-white">
-                          Detail for {order.no_invoice}
-                        </h3>
-                        <div className="grid grid-cols-2 gap-4">
-                          <p className="text-gray-600 dark:text-gray-300">
-                            <strong>Nama Perusahaan:</strong> {order.nama_perusahaan}
-                          </p>
-                          <p className="text-gray-600 dark:text-gray-300">
-                            <strong>Invoice Date:</strong> {formatDate(order.invoice_date)}
-                          </p>
-                          {(() => {
-                              const progressKeys = Object.keys(order.progress);
-                              const lastCompletedIndex = progressKeys.findIndex(
-                                (key) => !order.progress[key]
-                              );
-
-                              return (
-                                <p className="text-gray-600 dark:text-gray-300">
-                                  <strong>Processing Began:</strong>{" "}
-                                  {/* {formatDate(order.due_date)},{" "} */}
-                                  {lastCompletedIndex !== -1 ? progressKeys[lastCompletedIndex].replace("_", " ") : "Selesai"}
-                                </p>
-                              );
-                            })()}
-                          <p className="text-gray-600 dark:text-gray-300">
-                            <strong>Due Date:</strong> {formatDate(order.due_date)}
-                          </p>
-                        </div>
-                        <div className="mt-4">
-                          <h4 className="text-md font-semibold text-gray-700 dark:text-white mb-2">Progress Status:</h4>
-                          <div className="grid grid-cols-4 gap-4">
-                            {Object.entries(order.progress).map(([key, value]) => (
-                              <div key={key} className="items-center gap-2 mt-1">
-                                <div className="flex items-center gap-2">
-                                  <span
-                                    className={`w-4 h-4 rounded-full ${value ? "bg-green-500" : "bg-gray-300"}`}
-                                  ></span>
-                                  <span className="text-gray-600 dark:text-gray-300">{key.replace("_", " ")}</span>
+                    <TableCell className="px-5 py-3 text-gray-500 text-start text-theme-md dark:text-gray-400">
+                      {order.no_invoice}
+                    </TableCell>
+                    <TableCell className="px-5 py-3 text-gray-500 text-start text-theme-md dark:text-gray-400">
+                      {order.nama_perusahaan}
+                    </TableCell>
+                    {Object.values(order.progress).map((status, idx) => (
+                      <TableCell key={idx} className="px-5 py-3 text-gray-500 text-start text-theme-md dark:text-gray-400">
+                        <div
+                          className={`w-4 h-4 rounded-full ${
+                            status ? "bg-green-500" : "bg-gray-300"
+                          }`}
+                        ></div>
+                      </TableCell>
+                    ))}
+                    <TableCell className="px-5 py-3 text-gray-500 text-start text-theme-md dark:text-gray-400">
+                      <Button
+                        size="sm"
+                        variant="primary"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          router.push(`/details?invoice=${order.no_invoice}`);
+                        }}
+                      >
+                        Details
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                  {expandedRow === order.no_invoice && (
+                    <tr className="bg-gray-50 dark:bg-gray-800">
+                      <td colSpan={8}>
+                        <div className="p-4 bg-white dark:bg-gray-700 rounded-lg shadow-md">
+                          <h3 className="font-semibold text-lg mb-2 text-gray-700 dark:text-white">
+                            Detail for {order.no_invoice}
+                          </h3>
+                          <div className="grid grid-cols-2 gap-4">
+                            <p className="text-gray-600 dark:text-gray-300">
+                              <strong>Nama Perusahaan:</strong> {order.nama_perusahaan}
+                            </p>
+                            <p className="text-gray-600 dark:text-gray-300">
+                              <strong>Invoice Date:</strong> {formatDate(order.invoice_date)}
+                            </p>
+                            <p className="text-gray-600 dark:text-gray-300">
+                              <strong>Due Date:</strong> {formatDate(order.due_date)}
+                            </p>
+                          </div>
+                          <div className="mt-4">
+                            <h4 className="text-md font-semibold text-gray-700 dark:text-white mb-2">Progress Status:</h4>
+                            <div className="grid grid-cols-4 gap-4">
+                              {Object.entries(order.progress).map(([key, value]) => (
+                                <div key={key} className="items-center gap-2 mt-1">
+                                  <div className="flex items-center gap-2">
+                                    <span
+                                      className={`w-4 h-4 rounded-full ${value ? "bg-green-500" : "bg-gray-300"}`}
+                                    ></span>
+                                    <span className="text-gray-600 dark:text-gray-300">{key.replace("_", " ")}</span>
+                                  </div>
+                                  <p className="text-gray-600 dark:text-gray-300 mt-2">
+                                    <strong>Handle By:</strong> {order.handle_by[key] ?? "-"}
+                                  </p>
                                 </div>
-                                <p className="text-gray-600 dark:text-gray-300 mt-2">
-                                  <strong>Handle By:</strong> {order.handle_by[key] ?? "-"}
-                                </p>
-                              </div>
-                            ))}
+                              ))}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </td>
-                  </tr>
-                )}
-              </React.Fragment>
+                      </td>
+                    </tr>
+                  )}
+                </React.Fragment>
               ))}
             </TableBody>
           </Table>
