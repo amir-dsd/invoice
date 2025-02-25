@@ -751,7 +751,7 @@ export default function BasicTableOne() {
                   isHeader
                   className="px-5 py-3 font-medium text-gray-500 text-start text-theme-md dark:text-gray-400"
                 >
-                  Nama Perusahaan / vendor
+                  Nama Perusahaan
                 </TableCell>
                 <TableCell
                   isHeader
@@ -811,9 +811,10 @@ export default function BasicTableOne() {
                       <Button
                         size="sm"
                         variant="primary"
-                        onClick={(e) => {
+                        onClick={() => {
                           // e.stopPropagation();
                           window.location.href = `/details?invoice=${order.no_invoice.replace('#', '')}`;
+                          // router.push(`/details?invoice=${order.no_invoice.replace('#', '')}`);
                         }}
                       >
                         Details

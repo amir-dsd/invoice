@@ -23,11 +23,11 @@ const LOCAL_STORAGE_KEY = "tableData";
 const ProgressFlow = ({ data }: { data: Data[] }) => (
   <div className="space-y-4">
     {data.map((item, index) => (
-      <div key={index} className="flex items-center space-x-4">
+      <div key={index} className="flex items-start space-x-4">
         <div className="flex-shrink-0">
-          <div className="w-4 h-4 bg-blue-500 rounded-full"></div>
+          <div className="my-1 w-4 h-4 bg-blue-500 rounded-full"></div>
         </div>
-        <div className="flex-1">
+        <div className="flex-1 border-b-2 border-solid">
           <p className="text-sm font-medium text-gray-800 dark:text-white/90">
             {item.title}
           </p>
@@ -46,6 +46,10 @@ const ProgressFlow = ({ data }: { data: Data[] }) => (
           <p className="text-xs text-gray-400 dark:text-gray-500">
             Approved by: {item.approvedBy} | Sent by: {item.sentBy} | Sent to: {item.sentTo}
           </p>
+          <p className="text-xs text-gray-400 dark:text-gray-500">
+            Documents: 
+          </p>
+          <img className="my-3 h-[50px] w-[50px]" src="https://iili.io/3JFsmDx.png"/>
         </div>
       </div>
     ))}
@@ -94,9 +98,6 @@ export default function DetailsPage() {
                 </p>
                 <p className="text-sm text-gray-500 dark:text-gray-400">
                   <span className="font-medium text-gray-800 dark:text-white/90">Description:</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                </p>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
-                  <span className="font-medium text-gray-800 dark:text-white/90">Documents:</span>
                 </p>
               </div>
             </div>
