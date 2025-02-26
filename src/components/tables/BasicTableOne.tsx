@@ -788,7 +788,7 @@ export default function BasicTableOne() {
             <TableBody className="divide-y divide-gray-100 dark:divide-white/[0.05]">
               {tableData.map((order, index) => (
                 <React.Fragment key={order.no_invoice}>
-                  <TableRow onClick={() => handleRowClick(order.no_invoice)} className="cursor-pointer hover:bg-gray-100">
+                  <TableRow onClick={() => handleRowClick(order.no_invoice)} className="cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700">
                     <TableCell className="px-5 py-3 text-gray-500 text-start text-theme-md dark:text-gray-400">
                       {index + 1}
                     </TableCell>
