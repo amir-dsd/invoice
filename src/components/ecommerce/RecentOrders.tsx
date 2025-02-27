@@ -688,7 +688,8 @@ export default function RecentOrders() {
       })
       setTableData(filterPending);
     } else {
-      const filterPending = JSON.parse(defaultData).filter((x) => {
+      console.log(defaultData,"LALA")
+      const filterPending = defaultData.filter((x) => {
         return Object.values(x.progress).findIndex(x => x == false) >= 0;
       })
       setTableData(filterPending);
