@@ -60,7 +60,20 @@ export default function DetailsPage() {
   const queryParams = new URLSearchParams(window.location.search);
   const invoice = queryParams.get('invoice');
   const [data, setData] = useState<Data[]>([]);
+  const [open, setOpen] = useState(false);
+  const [description, setDescription] = useState("");
+  const [department, setDepartment] = useState("");
+  const [person, setPerson] = useState("");
+  const [attachment, setAttachment] = useState(null);
   const [loading, setLoading] = useState<boolean>(true);
+  const handleFileChange = (e) => {
+    setAttachment(e.target.files[0]);
+  };
+
+  const handleSubmit = () => {
+    console.log({ description, department, person, attachment });
+    setOpen(false);
+  };
   useEffect(() => {
     if (!invoice) return;
 
@@ -100,8 +113,48 @@ export default function DetailsPage() {
                   <span className="font-medium text-gray-800 dark:text-white/90">Description:</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                 </p>
               </div>
+              <button onClick={() => setOpen(true)} className="px-4 py-2 bg-blue-600 text-white rounded">Open Modal</button>
             </div>
           </div>
+          {open && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-6 rounded shadow-lg w-96">
+            <h2 className="text-lg font-semibold mb-4">Submit Details</h2>
+            <textarea 
+              className="w-full border p-2 mb-2" 
+              placeholder="Enter description" 
+              value={description} 
+              onChange={(e) => setDescription(e.target.value)}
+            />
+            <select className="w-full border p-2 mb-2" value={department} onChange={(e) => setDepartment(e.target.value)}>
+              <option value="">Select Department</option>
+              <option value="sales">Sales</option>
+<option value="director">Director</option>
+<option value="customers">Customers</option>
+<option value="finance">Finance</option>
+<option value="legal">Legal</option>
+            </select>
+            <select className="w-full border p-2 mb-2" value={person} onChange={(e) => setPerson(e.target.value)}>
+  <option value="">Select Person</option>
+  <option value="john">John Doe</option>
+  <option value="jane">Jane Smith</option>
+  <option value="michael">Michael Johnson</option>
+  <option value="emily">Emily Davis</option>
+  <option value="david">David Wilson</option>
+  <option value="sophia">Sophia Martinez</option>
+  <option value="james">James Brown</option>
+  <option value="olivia">Olivia Taylor</option>
+  <option value="robert">Robert Anderson</option>
+  <option value="emma">Emma Thomas</option>
+</select>
+            <input type="file" className="w-full border p-2 mb-2" onChange={handleFileChange} />
+            <div className="flex justify-end space-x-2">
+              <button onClick={() => setOpen(false)} className="px-4 py-2 bg-gray-500 text-white rounded">Cancel</button>
+              <button onClick={handleSubmit} className="px-4 py-2 bg-blue-600 text-white rounded">Submit</button>
+            </div>
+          </div>
+        </div>
+      )}
 
           {/* Bagian Kanan: Alur Progres */}
           <div>

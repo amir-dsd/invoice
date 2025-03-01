@@ -18,33 +18,50 @@ export default function SignInForm() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const users:any = {
     sales: {
+      fullName:'Mark Cuban',
       username: "sales123",
-      role: "Sales Representative",
+      role: "Sales",
       password: "secureSalesPass123!",
       email: "sales@company.com",
-      active: true
+      active: true,
+      canApprove:['BPO','PKS','BAST','INVOICE']
   },
   customer: {
+    fullName:'Jeff Bezoz',
       username: "customer123",
-      role: "Customer Support",
+      role: "Customer",
       password: "customerSecure!456",
       email: "support@company.com",
-      active: true
+      active: true,
+      canApprove:['BPO','PKS','BAST','INVOICE']
   },
   finance: {
+    fullName:'Bill Gates',
       username: "finance123",
-      role: "Finance Manager",
+      role: "Finance",
       password: "finance$$$789",
       email: "finance@company.com",
-      active: true
+      active: true,
+      canApprove:['BPO','PKS','BAST','INVOICE']
   },
   legal: {
+      fullName:'Jack Dorsey',
       username: "legal123",
-      role: "Legal Advisor",
+      role: "Legal",
       password: "legalMatters321!",
       email: "legal@company.com",
-      active: false // Example: Maybe on leave
-  }
+      active: true, // Example: Maybe on leave
+      canApprove:['BPO','PKS','BAST','INVOICE']
+  },
+  director: {
+    fullName:'Steve Jobs',
+    username: "director123",
+    role: "Director",
+    password: "directorMatters321!",
+    email: "director@company.com",
+    active: true, // Example: Maybe on leave
+    canApprove:['BPO','PKS','BAST','INVOICE']
+}
   };
 
   const handleSignIn = (e: React.FormEvent<HTMLFormElement>) => {

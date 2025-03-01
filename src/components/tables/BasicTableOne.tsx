@@ -59,478 +59,584 @@ type TableData = {
 
 const defaultData: TableData[] = [
   {
-    "no_invoice": "#12301339",
-    "nama_perusahaan": "PT Alpha",
-    "progress": {
+    "no_invoice": "#12301338",
+      "nama_perusahaan": "PT Alpha",
+      "stage":'Invoice',
+        "progress": {
       "progres_1": true,
-      "progres_2": true,
-      "progres_3": true,
-      "progres_4": false
+        "progres_2": true,
+          "progres_3": true,
+            "progres_4": false
     },
     "handle_by": {
       "progres_1": "Ade",
-      "progres_2": "Dadang",
-      "progres_3": "Suep",
-      "progres_4": null
+        "progres_2": "Dadang",
+          "progres_3": "Suep",
+            "progres_4": null
     },
     "invoice_date": "2023-10-01",
-    "due_date": "2023-10-05",
-    "dataBPO": [
-      {
-        approved: true,
-        title: "Dept Sales",
-        recieveDate: "2023-10-01",
-        approvalDate: "2023-10-01",
-        dueDate: "2023-10-01",
-        attatchments: [
-          
+      "due_date": "2023-10-05",
+        "dataBPO": [
+          {
+            pending:false,
+            approved: true,
+            role:'Sales',
+            title: "Dept Sales",
+            recieveDate: "2023-10-01",
+            approvalDate: "2023-10-01",
+            dueDate: "2023-10-01",
+            attatchments: [
+  
+            ],
+            description: "Diterima",
+            approvedBy: "dodi",
+            sentBy: "dodi",
+            sentTo: "dodi"
+          },
+          {
+            pending:false,
+            approved: true,
+            role:'Director',
+            title: "Director",
+            recieveDate: "2023-10-01",
+            approvalDate: "2023-10-01",
+            dueDate: "2023-10-01",
+            attatchments: [
+  
+            ],
+            description: "Diterima",
+            approvedBy: "dodi",
+            sentBy: "dodi",
+            sentTo: "dodi"
+          },
+          {
+            pending:false,
+            approved: true,
+            role:'Sales',
+            title: "Dept Sales",
+            recieveDate: "2023-10-01",
+            approvalDate: "2023-10-01",
+            dueDate: "2023-10-01",
+            attatchments: [
+  
+            ],
+            description: "Diterima",
+            approvedBy: "dodi",
+            sentBy: "dodi",
+            sentTo: "dodi"
+          },
+          {
+            pending:false,
+            approved: true,
+            role:'Customers',
+            title: "Customers",
+            recieveDate: "2023-10-01",
+            approvalDate: "2023-10-01",
+            dueDate: "2023-10-01",
+            attatchments: [
+  
+            ],
+            description: "Diterima",
+            approvedBy: "dodi",
+            sentBy: "dodi",
+            sentTo: "dodi"
+          },
+          {
+            pending:false,
+            approved: true,
+            role:'Sales',
+            title: "Dept Sales",
+            recieveDate: "2023-10-01",
+            approvalDate: "2023-10-01",
+            dueDate: "2023-10-01",
+            attatchments: [
+  
+            ],
+            description: "Diterima",
+            approvedBy: "dodi",
+            sentBy: "dodi",
+            sentTo: "dodi"
+          },
         ],
-        description: "Diterima",
-        approvedBy: "dodi",
-        sentBy: "dodi",
-        sentTo: "dodi"
-      },
-      {
-        approved: true,
-        title: "Director",
-        recieveDate: "2023-10-01",
-        approvalDate: "2023-10-01",
-        dueDate: "2023-10-01",
-        attatchments: [
-          
-        ],
-        description: "Diterima",
-        approvedBy: "dodi",
-        sentBy: "dodi",
-        sentTo: "dodi"
-      },
-      {
-        approved: true,
-        title: "Dept Sales",
-        recieveDate: "2023-10-01",
-        approvalDate: "2023-10-01",
-        dueDate: "2023-10-01",
-        attatchments: [
-          
-        ],
-        description: "Diterima",
-        approvedBy: "dodi",
-        sentBy: "dodi",
-        sentTo: "dodi"
-      },
-      {
-        approved: true,
-        title: "Customers",
-        recieveDate: "2023-10-01",
-        approvalDate: "2023-10-01",
-        dueDate: "2023-10-01",
-        attatchments: [
-          
-        ],
-        description: "Diterima",
-        approvedBy: "dodi",
-        sentBy: "dodi",
-        sentTo: "dodi"
-      },
-      {
-        approved: true,
-        title: "Dept Sales",
-        recieveDate: "2023-10-01",
-        approvalDate: "2023-10-01",
-        dueDate: "2023-10-01",
-        attatchments: [
-          
-        ],
-        description: "Diterima",
-        approvedBy: "dodi",
-        sentBy: "dodi",
-        sentTo: "dodi"
-      },
-    ],
-    "dataPKS": [
-      {
-        approved: true,
-        title: "Dept Sales",
-        recieveDate: "2023-10-01",
-        approvalDate: "2023-10-01",
-        dueDate: "2023-10-01",
-        attatchments: [
-          
-        ],
-        description: "Diterima",
-        approvedBy: "dodi",
-        sentBy: "dodi",
-        sentTo: "dodi"
-      },
-      {
-        approved: true,
-        title: "Customers",
-        recieveDate: "2023-10-01",
-        approvalDate: "2023-10-01",
-        dueDate: "2023-10-01",
-        attatchments: [
-          
-        ],
-        description: "Diterima",
-        approvedBy: "dodi",
-        sentBy: "dodi",
-        sentTo: "dodi"
-      },
-      {
-        approved: true,
-        title: "Dept Sales",
-        recieveDate: "2023-10-01",
-        approvalDate: "2023-10-01",
-        dueDate: "2023-10-01",
-        attatchments: [
-          
-        ],
-        description: "Diterima",
-        approvedBy: "dodi",
-        sentBy: "dodi",
-        sentTo: "dodi"
-      },
-    ],
-    "dataBAST": [
-      {
-        approved: true,
-        title: "Dept Sales",
-        recieveDate: "2023-10-01",
-        approvalDate: "2023-10-01",
-        dueDate: "2023-10-01",
-        attatchments: [
-          
-        ],
-        description: "Diterima",
-        approvedBy: "dodi",
-        sentBy: "dodi",
-        sentTo: "dodi"
-      },
-      {
-        approved: true,
-        title: "Customers",
-        recieveDate: "2023-10-01",
-        approvalDate: "2023-10-01",
-        dueDate: "2023-10-01",
-        attatchments: [
-          
-        ],
-        description: "Diterima",
-        approvedBy: "dodi",
-        sentBy: "dodi",
-        sentTo: "dodi"
-      },
-      {
-        approved: true,
-        title: "Dept Sales",
-        recieveDate: "2023-10-01",
-        approvalDate: "2023-10-01",
-        dueDate: "2023-10-01",
-        attatchments: [
-          
-        ],
-        description: "Diterima",
-        approvedBy: "dodi",
-        sentBy: "dodi",
-        sentTo: "dodi"
-      },
-    ],
-    "dataINOVICE":[
-      {
-        approved: true,
-        title: "Dept Sales",
-        recieveDate: "2023-10-01",
-        approvalDate: "2023-10-01",
-        dueDate: "2023-10-01",
-        attatchments: [
-          
-        ],
-        description: "Diterima",
-        approvedBy: "dodi",
-        sentBy: "dodi",
-        sentTo: "dodi"
-      },
-      {
-        approved: true,
-        title: "Dept Fin",
-        recieveDate: "2023-10-01",
-        approvalDate: "2023-10-01",
-        dueDate: "2023-10-01",
-        attatchments: [
-          
-        ],
-        description: "Diterima",
-        approvedBy: "dodi",
-        sentBy: "dodi",
-        sentTo: "dodi"
-      },
-      {
-        approved: true,
-        title: "Director",
-        recieveDate: "2023-10-01",
-        approvalDate: "2023-10-01",
-        dueDate: "2023-10-01",
-        attatchments: [
-          
-        ],
-        description: "Diterima",
-        approvedBy: "dodi",
-        sentBy: "dodi",
-        sentTo: "dodi"
-      },
-      {
-        approved: true,
-        title: "Customers",
-        recieveDate: "2023-10-01",
-        approvalDate: "2023-10-01",
-        dueDate: "2023-10-01",
-        attatchments: [
-          
-        ],
-        description: "Diterima",
-        approvedBy: "dodi",
-        sentBy: "dodi",
-        sentTo: "dodi"
-      },
-    ]
+          "dataPKS": [
+            {
+              pending:false,
+              approved: true,
+              role:'Sales',
+              title: "Dept Sales",
+              recieveDate: "2023-10-01",
+              approvalDate: "2023-10-01",
+              dueDate: "2023-10-01",
+              attatchments: [
+  
+              ],
+              description: "Diterima",
+              approvedBy: "dodi",
+              sentBy: "dodi",
+              sentTo: "dodi"
+            },
+            {
+              pending:false,
+              approved: true,
+              role:'Customers',
+              title: "Customers",
+              recieveDate: "2023-10-01",
+              approvalDate: "2023-10-01",
+              dueDate: "2023-10-01",
+              attatchments: [
+  
+              ],
+              description: "Diterima",
+              approvedBy: "dodi",
+              sentBy: "dodi",
+              sentTo: "dodi"
+            },
+            {
+              pending:false,
+              approved: true,
+              role:'Sales',
+              title: "Dept Sales",
+              recieveDate: "2023-10-01",
+              approvalDate: "2023-10-01",
+              dueDate: "2023-10-01",
+              attatchments: [
+  
+              ],
+              description: "Diterima",
+              approvedBy: "dodi",
+              sentBy: "dodi",
+              sentTo: "dodi"
+            },
+          ],
+            "dataBAST": [
+              {
+                pending:false,
+                approved: true,
+                role:'Sales',
+                title: "Dept Sales",
+                recieveDate: "2023-10-01",
+                approvalDate: "2023-10-01",
+                dueDate: "2023-10-01",
+                attatchments: [
+  
+                ],
+                description: "Diterima",
+                approvedBy: "dodi",
+                sentBy: "dodi",
+                sentTo: "dodi"
+              },
+              {
+                pending:false,
+                approved: true,
+                role:'Customers',
+                title: "Customers",
+                recieveDate: "2023-10-01",
+                approvalDate: "2023-10-01",
+                dueDate: "2023-10-01",
+                attatchments: [
+  
+                ],
+                description: "Diterima",
+                approvedBy: "dodi",
+                sentBy: "dodi",
+                sentTo: "dodi"
+              },
+              {
+                pending:false,
+                approved: true,
+                role:'Sales',
+                title: "Dept Sales",
+                recieveDate: "2023-10-01",
+                approvalDate: "2023-10-01",
+                dueDate: "2023-10-01",
+                attatchments: [
+  
+                ],
+                description: "Diterima",
+                approvedBy: "dodi",
+                sentBy: "dodi",
+                sentTo: "dodi"
+              },
+            ],
+              "dataINOVICE": [
+                {
+                  pending:false,
+                  approved: true,
+                  role:'Sales',
+                  title: "Dept Sales",
+                  recieveDate: "2023-10-01",
+                  approvalDate: "2023-10-01",
+                  dueDate: "2023-10-01",
+                  attatchments: [
+  
+                  ],
+                  description: "Diterima",
+                  approvedBy: "dodi",
+                  sentBy: "dodi",
+                  sentTo: "dodi"
+                },
+                {
+                  pending:true,
+                  approved: true,
+                  role:'Finance',
+                  title: "Dept Fin",
+                  recieveDate: "2023-10-01",
+                  approvalDate: "2023-10-01",
+                  dueDate: "2023-10-01",
+                  attatchments: [
+  
+                  ],
+                  description: "Diterima",
+                  approvedBy: "dodi",
+                  sentBy: "dodi",
+                  sentTo: "dodi"
+                },
+                {
+                  pending:true,
+                  approved: true,
+                  title: "Director",
+                  role:'Director',
+                  recieveDate: "2023-10-01",
+                  approvalDate: "2023-10-01",
+                  dueDate: "2023-10-01",
+                  attatchments: [
+  
+                  ],
+                  description: "Diterima",
+                  approvedBy: "dodi",
+                  sentBy: "dodi",
+                  sentTo: "dodi"
+                },
+                {
+                  pending:false,
+                  approved: true,
+                  role:'Customer',
+                  title: "Customers",
+                  recieveDate: "2023-10-01",
+                  approvalDate: "2023-10-01",
+                  dueDate: "2023-10-01",
+                  attatchments: [
+  
+                  ],
+                  description: "Diterima",
+                  approvedBy: "dodi",
+                  sentBy: "dodi",
+                  sentTo: "dodi"
+                },
+              ]
   }
 ,  
 {
-  "no_invoice": "#12301340",
-  "nama_perusahaan": "PT Alpha",
-  "progress": {
+  "no_invoice": "#12301339",
+    "nama_perusahaan": "PT Alpha",
+    "stage":'Invoice',
+      "progress": {
     "progres_1": true,
-    "progres_2": true,
-    "progres_3": true,
-    "progres_4": false
+      "progres_2": true,
+        "progres_3": true,
+          "progres_4": false
   },
   "handle_by": {
     "progres_1": "Ade",
-    "progres_2": "Dadang",
-    "progres_3": "Suep",
-    "progres_4": null
+      "progres_2": "Dadang",
+        "progres_3": "Suep",
+          "progres_4": null
   },
   "invoice_date": "2023-10-01",
-  "due_date": "2023-10-05",
-  "dataBPO": [
-    {
-      approved: true,
-      title: "Dept Sales",
-      recieveDate: "2023-10-01",
-      approvalDate: "2023-10-01",
-      dueDate: "2023-10-01",
-      attatchments: [
-        
+    "due_date": "2023-10-05",
+      "dataBPO": [
+        {
+          pending:false,
+          approved: true,
+          role:'Sales',
+          title: "Dept Sales",
+          recieveDate: "2023-10-01",
+          approvalDate: "2023-10-01",
+          dueDate: "2023-10-01",
+          attatchments: [
+
+          ],
+          description: "Diterima",
+          approvedBy: "dodi",
+          sentBy: "dodi",
+          sentTo: "dodi"
+        },
+        {
+          pending:false,
+          approved: true,
+          role:'Director',
+          title: "Director",
+          recieveDate: "2023-10-01",
+          approvalDate: "2023-10-01",
+          dueDate: "2023-10-01",
+          attatchments: [
+
+          ],
+          description: "Diterima",
+          approvedBy: "dodi",
+          sentBy: "dodi",
+          sentTo: "dodi"
+        },
+        {
+          pending:false,
+          approved: true,
+          role:'Sales',
+          title: "Dept Sales",
+          recieveDate: "2023-10-01",
+          approvalDate: "2023-10-01",
+          dueDate: "2023-10-01",
+          attatchments: [
+
+          ],
+          description: "Diterima",
+          approvedBy: "dodi",
+          sentBy: "dodi",
+          sentTo: "dodi"
+        },
+        {
+          pending:false,
+          approved: true,
+          role:'Customers',
+          title: "Customers",
+          recieveDate: "2023-10-01",
+          approvalDate: "2023-10-01",
+          dueDate: "2023-10-01",
+          attatchments: [
+
+          ],
+          description: "Diterima",
+          approvedBy: "dodi",
+          sentBy: "dodi",
+          sentTo: "dodi"
+        },
+        {
+          pending:false,
+          approved: true,
+          role:'Sales',
+          title: "Dept Sales",
+          recieveDate: "2023-10-01",
+          approvalDate: "2023-10-01",
+          dueDate: "2023-10-01",
+          attatchments: [
+
+          ],
+          description: "Diterima",
+          approvedBy: "dodi",
+          sentBy: "dodi",
+          sentTo: "dodi"
+        },
       ],
-      description: "Diterima",
-      approvedBy: "dodi",
-      sentBy: "dodi",
-      sentTo: "dodi"
-    },
-    {
-      approved: true,
-      title: "Director",
-      recieveDate: "2023-10-01",
-      approvalDate: "2023-10-01",
-      dueDate: "2023-10-01",
-      attatchments: [
-        
-      ],
-      description: "Diterima",
-      approvedBy: "dodi",
-      sentBy: "dodi",
-      sentTo: "dodi"
-    },
-    {
-      approved: true,
-      title: "Dept Sales",
-      recieveDate: "2023-10-01",
-      approvalDate: "2023-10-01",
-      dueDate: "2023-10-01",
-      attatchments: [
-        
-      ],
-      description: "Diterima",
-      approvedBy: "dodi",
-      sentBy: "dodi",
-      sentTo: "dodi"
-    },
-    {
-      approved: true,
-      title: "Customers",
-      recieveDate: "2023-10-01",
-      approvalDate: "2023-10-01",
-      dueDate: "2023-10-01",
-      attatchments: [
-        
-      ],
-      description: "Diterima",
-      approvedBy: "dodi",
-      sentBy: "dodi",
-      sentTo: "dodi"
-    },
-    {
-      approved: true,
-      title: "Dept Sales",
-      recieveDate: "2023-10-01",
-      approvalDate: "2023-10-01",
-      dueDate: "2023-10-01",
-      attatchments: [
-        
-      ],
-      description: "Diterima",
-      approvedBy: "dodi",
-      sentBy: "dodi",
-      sentTo: "dodi"
-    },
-  ],
-  "dataPKS": [
-    {
-      approved: true,
-      title: "Dept Sales",
-      recieveDate: "2023-10-01",
-      approvalDate: "2023-10-01",
-      dueDate: "2023-10-01",
-      attatchments: [
-        
-      ],
-      description: "Diterima",
-      approvedBy: "dodi",
-      sentBy: "dodi",
-      sentTo: "dodi"
-    },
-    {
-      approved: true,
-      title: "Customers",
-      recieveDate: "2023-10-01",
-      approvalDate: "2023-10-01",
-      dueDate: "2023-10-01",
-      attatchments: [
-        
-      ],
-      description: "Diterima",
-      approvedBy: "dodi",
-      sentBy: "dodi",
-      sentTo: "dodi"
-    },
-    {
-      approved: true,
-      title: "Dept Sales",
-      recieveDate: "2023-10-01",
-      approvalDate: "2023-10-01",
-      dueDate: "2023-10-01",
-      attatchments: [
-        
-      ],
-      description: "Diterima",
-      approvedBy: "dodi",
-      sentBy: "dodi",
-      sentTo: "dodi"
-    },
-  ],
-  "dataBAST": [
-    {
-      approved: true,
-      title: "Dept Sales",
-      recieveDate: "2023-10-01",
-      approvalDate: "2023-10-01",
-      dueDate: "2023-10-01",
-      attatchments: [
-        
-      ],
-      description: "Diterima",
-      approvedBy: "dodi",
-      sentBy: "dodi",
-      sentTo: "dodi"
-    },
-    {
-      approved: true,
-      title: "Customers",
-      recieveDate: "2023-10-01",
-      approvalDate: "2023-10-01",
-      dueDate: "2023-10-01",
-      attatchments: [
-        
-      ],
-      description: "Diterima",
-      approvedBy: "dodi",
-      sentBy: "dodi",
-      sentTo: "dodi"
-    },
-    {
-      approved: true,
-      title: "Dept Sales",
-      recieveDate: "2023-10-01",
-      approvalDate: "2023-10-01",
-      dueDate: "2023-10-01",
-      attatchments: [
-        
-      ],
-      description: "Diterima",
-      approvedBy: "dodi",
-      sentBy: "dodi",
-      sentTo: "dodi"
-    },
-  ],
-  "dataINOVICE":[
-    {
-      approved: true,
-      title: "Dept Sales",
-      recieveDate: "2023-10-01",
-      approvalDate: "2023-10-01",
-      dueDate: "2023-10-01",
-      attatchments: [
-        
-      ],
-      description: "Diterima",
-      approvedBy: "dodi",
-      sentBy: "dodi",
-      sentTo: "dodi"
-    },
-    {
-      approved: true,
-      title: "Dept Fin",
-      recieveDate: "2023-10-01",
-      approvalDate: "2023-10-01",
-      dueDate: "2023-10-01",
-      attatchments: [
-        
-      ],
-      description: "Diterima",
-      approvedBy: "dodi",
-      sentBy: "dodi",
-      sentTo: "dodi"
-    },
-    {
-      approved: true,
-      title: "Director",
-      recieveDate: "2023-10-01",
-      approvalDate: "2023-10-01",
-      dueDate: "2023-10-01",
-      attatchments: [
-        
-      ],
-      description: "Diterima",
-      approvedBy: "dodi",
-      sentBy: "dodi",
-      sentTo: "dodi"
-    },
-    {
-      approved: true,
-      title: "Customers",
-      recieveDate: "2023-10-01",
-      approvalDate: "2023-10-01",
-      dueDate: "2023-10-01",
-      attatchments: [
-        
-      ],
-      description: "Diterima",
-      approvedBy: "dodi",
-      sentBy: "dodi",
-      sentTo: "dodi"
-    },
-  ]
+        "dataPKS": [
+          {
+            pending:false,
+            approved: true,
+            role:'Sales',
+            title: "Dept Sales",
+            recieveDate: "2023-10-01",
+            approvalDate: "2023-10-01",
+            dueDate: "2023-10-01",
+            attatchments: [
+
+            ],
+            description: "Diterima",
+            approvedBy: "dodi",
+            sentBy: "dodi",
+            sentTo: "dodi"
+          },
+          {
+            pending:false,
+            approved: true,
+            role:'Customers',
+            title: "Customers",
+            recieveDate: "2023-10-01",
+            approvalDate: "2023-10-01",
+            dueDate: "2023-10-01",
+            attatchments: [
+
+            ],
+            description: "Diterima",
+            approvedBy: "dodi",
+            sentBy: "dodi",
+            sentTo: "dodi"
+          },
+          {
+            pending:false,
+            approved: true,
+            role:'Sales',
+            title: "Dept Sales",
+            recieveDate: "2023-10-01",
+            approvalDate: "2023-10-01",
+            dueDate: "2023-10-01",
+            attatchments: [
+
+            ],
+            description: "Diterima",
+            approvedBy: "dodi",
+            sentBy: "dodi",
+            sentTo: "dodi"
+          },
+        ],
+          "dataBAST": [
+            {
+              pending:false,
+              approved: true,
+              role:'Sales',
+              title: "Dept Sales",
+              recieveDate: "2023-10-01",
+              approvalDate: "2023-10-01",
+              dueDate: "2023-10-01",
+              attatchments: [
+
+              ],
+              description: "Diterima",
+              approvedBy: "dodi",
+              sentBy: "dodi",
+              sentTo: "dodi"
+            },
+            {
+              pending:false,
+              approved: true,
+              role:'Customers',
+              title: "Customers",
+              recieveDate: "2023-10-01",
+              approvalDate: "2023-10-01",
+              dueDate: "2023-10-01",
+              attatchments: [
+
+              ],
+              description: "Diterima",
+              approvedBy: "dodi",
+              sentBy: "dodi",
+              sentTo: "dodi"
+            },
+            {
+              pending:false,
+              approved: true,
+              role:'Sales',
+              title: "Dept Sales",
+              recieveDate: "2023-10-01",
+              approvalDate: "2023-10-01",
+              dueDate: "2023-10-01",
+              attatchments: [
+
+              ],
+              description: "Diterima",
+              approvedBy: "dodi",
+              sentBy: "dodi",
+              sentTo: "dodi"
+            },
+          ],
+            "dataINOVICE": [
+              {
+                pending:false,
+                approved: true,
+                role:'Sales',
+                title: "Dept Sales",
+                recieveDate: "2023-10-01",
+                approvalDate: "2023-10-01",
+                dueDate: "2023-10-01",
+                attatchments: [
+
+                ],
+                description: "Diterima",
+                approvedBy: "dodi",
+                sentBy: "dodi",
+                sentTo: "dodi"
+              },
+              {
+                pending:true,
+                approved: true,
+                role:'Finance',
+                title: "Dept Fin",
+                recieveDate: "2023-10-01",
+                approvalDate: "2023-10-01",
+                dueDate: "2023-10-01",
+                attatchments: [
+
+                ],
+                description: "Diterima",
+                approvedBy: "dodi",
+                sentBy: "dodi",
+                sentTo: "dodi"
+              },
+              {
+                pending:true,
+                approved: true,
+                title: "Director",
+                role:'Director',
+                recieveDate: "2023-10-01",
+                approvalDate: "2023-10-01",
+                dueDate: "2023-10-01",
+                attatchments: [
+
+                ],
+                description: "Diterima",
+                approvedBy: "dodi",
+                sentBy: "dodi",
+                sentTo: "dodi"
+              },
+              {
+                pending:false,
+                approved: true,
+                role:'Customer',
+                title: "Customers",
+                recieveDate: "2023-10-01",
+                approvalDate: "2023-10-01",
+                dueDate: "2023-10-01",
+                attatchments: [
+
+                ],
+                description: "Diterima",
+                approvedBy: "dodi",
+                sentBy: "dodi",
+                sentTo: "dodi"
+              },
+            ]
 },
+{
+  "no_invoice": "#12301340",
+    "nama_perusahaan": "PT Alpha",
+    "stage":'BPO',
+      "progress": {
+    "progres_1": true,
+      "progres_2": true,
+        "progres_3": true,
+          "progres_4": false
+  },
+  "handle_by": {
+    "progres_1": "Ade",
+      "progres_2": "Dadang",
+        "progres_3": "Suep",
+          "progres_4": null
+  },
+  "invoice_date": "2023-10-01",
+    "due_date": "2023-10-05",
+      "dataBPO": [
+        {
+          pending:false,
+          approved: true,
+          role:'Sales',
+          title: "Dept Sales",
+          recieveDate: "2023-10-01",
+          approvalDate: "2023-10-01",
+          dueDate: "2023-10-01",
+          attatchments: [
+
+          ],
+          description: "Diterima",
+          approvedBy: "dodi",
+          sentBy: "dodi",
+          sentTo: ""
+        },
+      ],
+        "dataPKS": [
+
+        ],
+          "dataBAST": [
+          ],
+            "dataINOVICE": [
+            ]
+}
 // {
 //   "no_invoice": "#12301340",
 //   "nama_perusahaan": "PT Beta",
