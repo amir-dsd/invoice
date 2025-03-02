@@ -3,6 +3,7 @@
 import PageBreadcrumb from "@/components/common/PageBreadCrumb";
 import { useLocation } from 'react-router-dom';
 import React, { useEffect, useState } from "react";
+import { getUserData } from "../../../../../utils/auth";
 
 interface Data {
   approved: boolean;
@@ -60,19 +61,79 @@ export default function DetailsPage() {
   const queryParams = new URLSearchParams(window.location.search);
   const invoice = queryParams.get('invoice');
   const [data, setData] = useState<Data[]>([]);
+  const [dueDate, setDueDate] = useState<string>(''); // For Due Date
   const [open, setOpen] = useState(false);
   const [description, setDescription] = useState("");
   const [department, setDepartment] = useState("");
   const [person, setPerson] = useState("");
   const [attachment, setAttachment] = useState(null);
   const [loading, setLoading] = useState<boolean>(true);
+  const userData=getUserData()
   const handleFileChange = (e) => {
     setAttachment(e.target.files[0]);
   };
 
   const handleSubmit = () => {
-    console.log({ description, department, person, attachment });
     setOpen(false);
+    const storedData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) || "[]");
+
+  
+    // Filter the stored data based on invoice number
+    const filteredData = storedData.filter((item: Data) => item.no_invoice === '#'+invoice);
+  
+    if (filteredData.length > 0) {
+      // Find the invoice data
+      const invoiceData = filteredData[0]; // Assuming only one match, based on invoice number
+  
+      // Check all possible arrays (dataBPO, dataPKS, dataBAST, dataINOVICE) for pending: true
+      const allCategories = ['dataBPO', 'dataPKS', 'dataBAST', 'dataINOVICE'];
+  
+      let updated = false; // Flag to track if any update is made
+  
+      allCategories.forEach(category => {
+        if (!updated && invoiceData[category]) {
+          const array = invoiceData[category];
+  
+          // Find the first item with pending: true
+          const pendingItem = array.find((item: any) => item.pending === true);
+  
+          if (pendingItem) {
+            // Set the first pending item to pending: false
+            pendingItem.pending = false;
+  
+            // Log the updated pending item
+            console.log("Updated Pending Item:", pendingItem);
+  
+            // Append the new item with pending: true
+            const newItem = {
+              description,
+              department,
+              sentTo:person,
+              sentBy:userData.username,
+              attachments: attachment, // Assuming attachment is an array or relevant data
+              pending: true, // Set pending to true for the new item
+              recieveDate: new Date().toISOString().split('T')[0], // Current date as the receive date
+              dueDate: dueDate || "", // Due date from the date picker
+            };
+            array.push(newItem);
+  
+            // Log the newly appended item
+            console.log("Appended New Item:", newItem);
+  
+            updated = true; // Mark as updated to avoid further iterations
+          }
+        }
+      });
+  
+      if (updated) {
+        // After modification, store the updated data back to localStorage
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(storedData));
+      } else {
+        console.log("No pending items found.");
+      }
+    } else {
+      console.log("Invoice not found.");
+    }
   };
   useEffect(() => {
     if (!invoice) return;
@@ -81,7 +142,16 @@ export default function DetailsPage() {
     console.log("Stored Data:", storedData);
 
     const filteredData = storedData.filter((item: Data) => item.no_invoice === '#'+invoice);
-    console.log(filteredData,'FILTEREDDATA')
+    const allData = [
+      ...filteredData[0].dataBPO,
+      ...filteredData[0].dataPKS,
+      ...filteredData[0].dataBAST,
+      ...filteredData[0].dataINOVICE
+    ];
+  
+    const pendingItems = allData.filter(item => item.pending === true);
+     console.log(pendingItems.map(item => item.sentTo))
+    console.log(pendingItems,"PENDING ITEMS")
     setData(filteredData);
     setLoading(false);
   }, []);
@@ -117,44 +187,52 @@ export default function DetailsPage() {
             </div>
           </div>
           {open && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-          <div className="bg-white p-6 rounded shadow-lg w-96">
-            <h2 className="text-lg font-semibold mb-4">Submit Details</h2>
-            <textarea 
-              className="w-full border p-2 mb-2" 
-              placeholder="Enter description" 
-              value={description} 
-              onChange={(e) => setDescription(e.target.value)}
-            />
-            <select className="w-full border p-2 mb-2" value={department} onChange={(e) => setDepartment(e.target.value)}>
-              <option value="">Select Department</option>
-              <option value="sales">Sales</option>
-<option value="director">Director</option>
-<option value="customers">Customers</option>
-<option value="finance">Finance</option>
-<option value="legal">Legal</option>
-            </select>
-            <select className="w-full border p-2 mb-2" value={person} onChange={(e) => setPerson(e.target.value)}>
-  <option value="">Select Person</option>
-  <option value="john">John Doe</option>
-  <option value="jane">Jane Smith</option>
-  <option value="michael">Michael Johnson</option>
-  <option value="emily">Emily Davis</option>
-  <option value="david">David Wilson</option>
-  <option value="sophia">Sophia Martinez</option>
-  <option value="james">James Brown</option>
-  <option value="olivia">Olivia Taylor</option>
-  <option value="robert">Robert Anderson</option>
-  <option value="emma">Emma Thomas</option>
-</select>
-            <input type="file" className="w-full border p-2 mb-2" onChange={handleFileChange} />
-            <div className="flex justify-end space-x-2">
-              <button onClick={() => setOpen(false)} className="px-4 py-2 bg-gray-500 text-white rounded">Cancel</button>
-              <button onClick={handleSubmit} className="px-4 py-2 bg-blue-600 text-white rounded">Submit</button>
-            </div>
-          </div>
-        </div>
-      )}
+  <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+    <div className="bg-white p-6 rounded shadow-lg w-96">
+      <h2 className="text-lg font-semibold mb-4">Submit Details</h2>
+      <textarea 
+        className="w-full border p-2 mb-2" 
+        placeholder="Enter description" 
+        value={description} 
+        onChange={(e) => setDescription(e.target.value)}
+      />
+      <select className="w-full border p-2 mb-2" value={department} onChange={(e) => setDepartment(e.target.value)}>
+        <option value="">Select Department</option>
+        <option value="sales">Sales</option>
+        <option value="director">Director</option>
+        <option value="customers">Customers</option>
+        <option value="finance">Finance</option>
+        <option value="legal">Legal</option>
+      </select>
+      <select className="w-full border p-2 mb-2" value={person} onChange={(e) => setPerson(e.target.value)}>
+        <option value="">Select Person</option>
+        <option value="john">John Doe</option>
+        <option value="jane">Jane Smith</option>
+        <option value="michael">Michael Johnson</option>
+        <option value="emily">Emily Davis</option>
+        <option value="david">David Wilson</option>
+        <option value="sophia">Sophia Martinez</option>
+        <option value="james">James Brown</option>
+        <option value="olivia">Olivia Taylor</option>
+        <option value="robert">Robert Anderson</option>
+        <option value="emma">Emma Thomas</option>
+      </select>
+      <input type="file" className="w-full border p-2 mb-2" onChange={handleFileChange} />
+      {/* Date picker for Due Date */}
+      <input 
+        type="date" 
+        className="w-full border p-2 mb-2" 
+        value={dueDate} 
+        onChange={(e) => setDueDate(e.target.value)} 
+      />
+      <div className="flex justify-end space-x-2">
+        <button onClick={() => setOpen(false)} className="px-4 py-2 bg-gray-500 text-white rounded">Cancel</button>
+        <button onClick={handleSubmit} className="px-4 py-2 bg-blue-600 text-white rounded">Submit</button>
+      </div>
+    </div>
+  </div>
+)}
+
 
           {/* Bagian Kanan: Alur Progres */}
           <div>

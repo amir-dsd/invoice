@@ -613,8 +613,8 @@ const defaultData: TableData[] = [
     "due_date": "2023-10-05",
       "dataBPO": [
         {
-          pending:false,
-          approved: true,
+          pending:true,
+          approved: false,
           role:'Sales',
           title: "Dept Sales",
           recieveDate: "2023-10-01",
@@ -626,7 +626,7 @@ const defaultData: TableData[] = [
           description: "Diterima",
           approvedBy: "dodi",
           sentBy: "dodi",
-          sentTo: ""
+          sentTo: "John Doe"
         },
       ],
         "dataPKS": [
