@@ -37,6 +37,11 @@ const navItems: NavItem[] = [
     name: "Table Invoice",
     path: "/basic-tables",
   },
+  {
+    icon: <TableIcon />,
+    name: "Submit",
+    path: "/submit",
+  }
   // {
   //   icon: <CalenderIcon />,
   //   name: "Calendar",

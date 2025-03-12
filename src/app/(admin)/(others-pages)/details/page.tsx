@@ -100,6 +100,7 @@ export default function DetailsPage() {
           if (pendingItem) {
             // Set the first pending item to pending: false
             pendingItem.pending = false;
+            pendingItem.approvalDate=new Date().toISOString().split('T')[0]
   
             // Log the updated pending item
             console.log("Updated Pending Item:", pendingItem);
