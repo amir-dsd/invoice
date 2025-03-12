@@ -7,9 +7,9 @@ import React from "react";
 export default function BasicTables() {
   return (
     <div>
-      <PageBreadcrumb pageTitle="Task Kanban" />
+      <PageBreadcrumb pageTitle="TABLE INVOICE" />
       <div className="space-y-6">
-        <ComponentCard title="Basic Table 1">
+        <ComponentCard title="LIST INVOICE">
           <BasicTableOne />
         </ComponentCard>
       </div>
