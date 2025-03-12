@@ -58,7 +58,7 @@ const ProgressFlow = ({ data }: { data: Data[] }) => (
 );
 
 export default function DetailsPage() {
-  const queryParams = new URLSearchParams(window.location.search);
+  const queryParams = new URLSearchParams(window?.location?.search);
   const invoice = queryParams.get('invoice');
   const [data, setData] = useState<Data[]>([]);
   const [dueDate, setDueDate] = useState<string>(''); // For Due Date
