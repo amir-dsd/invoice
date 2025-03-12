@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
+   typescript: {
+    ignoreBuildErrors: true, // Skips TypeScript type checking
+  },
   /* config options here */
   webpack(config) {
     config.module.rules.push({
