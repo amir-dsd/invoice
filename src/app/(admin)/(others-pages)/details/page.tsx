@@ -58,8 +58,8 @@ const ProgressFlow = ({ data }: { data: Data[] }) => (
 );
 
 export default function DetailsPage() {
-  const queryParams = new URLSearchParams(window?.location?.search);
-  const invoice = queryParams.get('invoice');
+  const [queryParams, setQueryParams] = useState<URLSearchParams | null>(null);
+  const [invoice,setInvoice]=useState('')
   const [data, setData] = useState<Data[]>([]);
   const [dueDate, setDueDate] = useState<string>(''); // For Due Date
   const [open, setOpen] = useState(false);
@@ -73,6 +73,18 @@ export default function DetailsPage() {
     setAttachment(e.target.files[0]);
   };
 
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setQueryParams(new URLSearchParams(window.location.search));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (queryParams) {
+      setInvoice(queryParams.get("invoice") || null);
+    }
+  }, [queryParams]);
   const handleSubmit = () => {
     setOpen(false);
     const storedData = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY) || "[]");
@@ -155,7 +167,7 @@ export default function DetailsPage() {
     console.log(pendingItems,"PENDING ITEMS")
     setData(filteredData);
     setLoading(false);
-  }, []);
+  }, [invoice]);
 
   if (loading) return <p>Loading...</p>;
 
